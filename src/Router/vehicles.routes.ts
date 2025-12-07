@@ -39,7 +39,6 @@ router.post('/', authenticate, authorize(['admin']), async (req, res) => {
         res.status(400).json({ error: err.message });
     }
 });
-
 router.put('/:vehicleId', authenticate, authorize(['admin']), async (req, res) => {
     const { vehicleId } = req.params;
     const { vehicle_name, type, registration_number, daily_rent_price, availability_status } = req.body;
