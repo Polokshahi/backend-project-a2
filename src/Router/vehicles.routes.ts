@@ -38,6 +38,7 @@ router.post('/', authenticate, authorize(['admin']), async (req, res) => {
     } catch (err: any) {
         res.status(400).json({ error: err.message });
     }
+    
 });
 router.put('/:vehicleId', authenticate, authorize(['admin']), async (req, res) => {
     const { vehicleId } = req.params;
