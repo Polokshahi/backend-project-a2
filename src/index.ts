@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
-import path from "path";
-dotenv.config({ path: path.join(process.cwd(), ".env") });
+dotenv.config();
 
 import express, { Request, Response } from "express";
 import { initializeDB } from "./config/db";
@@ -11,23 +10,26 @@ import bookingRoutes from "./Router/booking.routes";
 
 const app = express();
 
+// Middleware
 app.use(express.json());
 
-
+// Initialize Database
 initializeDB();
 
-
+// Routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/vehicles", authenticate, vehicleRoutes);
 app.use("/api/v1/bookings", bookingRoutes);
 
+// Health check
 app.get("/", (req: Request, res: Response) => {
   res.send("Server is running successfully");
 });
 
-// app.listen(process.env.PORT, () => {
-//   console.log(`Server is running on port ${process.env.PORT || 3000}`);
-// });
-
+// Vercel port
+const port = process.env.PORT || 5080;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 export default app;
