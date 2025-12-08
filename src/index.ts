@@ -13,10 +13,10 @@ const app = express();
 
 app.use(express.json());
 
-// Initialize database
+
 initializeDB();
 
-// Routes
+
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/vehicles", authenticate, vehicleRoutes);
 app.use("/api/v1/bookings", bookingRoutes);
