@@ -22,7 +22,7 @@ app.use("/api/v1/vehicles", authenticate, vehicleRoutes);
 app.use("/api/v1/bookings", bookingRoutes);
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World from Vercel!");
+  res.send("Server is running successfully");
 });
 
 app.listen(process.env.PORT, () => {
