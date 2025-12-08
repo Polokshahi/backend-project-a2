@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
+import path from 'path';
 dotenv.config({ path: path.join(process.cwd(), ".env") });
 import express from "express";
 import { Request, Response } from "express";
-import path from 'path';
 import { initializeDB } from './config/db';
 import authRoutes from './Router/auth.routes';
 import vehicleRoutes from './Router/vehicles.routes';
