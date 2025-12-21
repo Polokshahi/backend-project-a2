@@ -1,25 +1,26 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 import express, { Request, Response } from "express";
+import dotenv from "dotenv";
 import { initializeDB } from "./config/db";
 import authRoutes from "./Router/auth.routes";
 import vehicleRoutes from "./Router/vehicles.routes";
-import { authenticate } from "./Middleware/auth.middleware";
+import userRoutes from "./Router/users.routes";
 import bookingRoutes from "./Router/booking.routes";
+
+dotenv.config();
 
 const app = express();
 
-// Middleware
+
 app.use(express.json());
 
-// Initialize Database
+
 initializeDB();
 
 // Routes
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/vehicles", authenticate, vehicleRoutes);
+app.use("/api/v1/vehicles", vehicleRoutes);
 app.use("/api/v1/bookings", bookingRoutes);
+app.use("/api/v1/users", userRoutes);
 
 // Health check
 app.get("/", (req: Request, res: Response) => {
