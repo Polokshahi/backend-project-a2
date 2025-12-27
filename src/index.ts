@@ -22,12 +22,12 @@ app.use("/api/v1/vehicles", vehicleRoutes);
 app.use("/api/v1/bookings", bookingRoutes);
 app.use("/api/v1/users", userRoutes);
 
-// Health check
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Server is running successfully");
 });
 
-// Vercel port
+
 const port = process.env.PORT || 5080;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
